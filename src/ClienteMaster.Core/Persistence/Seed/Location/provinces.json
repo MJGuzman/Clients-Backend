@@ -1,0 +1,126 @@
+[
+	{
+		"id" : 1,
+		"name" : "Distrito Nacional"
+	},
+	{
+		"id" : 21,
+		"name" : "San Pedro de Macorís"
+	},
+	{
+		"id" : 22,
+		"name" : "La Romana"
+	},
+	{
+		"id" : 23,
+		"name" : "La Altagracia"
+	},
+	{
+		"id" : 24,
+		"name" : "El Seibo"
+	},
+	{
+		"id" : 25,
+		"name" : "Hato Mayor"
+	},
+	{
+		"id" : 31,
+		"name" : "Duarte"
+	},
+	{
+		"id" : 32,
+		"name" : "Samaná"
+	},
+	{
+		"id" : 33,
+		"name" : "Maria Trinidad Sánchez"
+	},
+	{
+		"id" : 34,
+		"name" : "Salcedo"
+	},
+	{
+		"id" : 41,
+		"name" : "La Vega"
+	},
+	{
+		"id" : 42,
+		"name" : "Monseñor Nouel"
+	},
+	{
+		"id" : 43,
+		"name" : "Sánchez Ramirez"
+	},
+	{
+		"id" : 51,
+		"name" : "Santiago"
+	},
+	{
+		"id" : 56,
+		"name" : "Espaillat"
+	},
+	{
+		"id" : 57,
+		"name" : "Puerto Plata"
+	},
+	{
+		"id" : 61,
+		"name" : "Valverde"
+	},
+	{
+		"id" : 62,
+		"name" : "Monte Cristi"
+	},
+	{
+		"id" : 63,
+		"name" : "Dajabónn"
+	},
+	{
+		"id" : 64,
+		"name" : "Santiago Rodríguez"
+	},
+	{
+		"id" : 71,
+		"name" : "Azua"
+	},
+	{
+		"id" : 72,
+		"name" : "San Juan de la Maguana"
+	},
+	{
+		"id" : 73,
+		"name" : "Elías Piña"
+	},
+	{
+		"id" : 81,
+		"name" : "Barahona"
+	},
+	{
+		"id": 82,
+		"name": "Bahoruco"
+	},
+	{
+		"id" : 83,
+		"name" : "Independencia"
+	},
+	{
+		"id" : 84,
+		"name" : "Perdenales"
+	},
+	{
+		"id" : 91,
+		"name" : "San Cristóbal"
+	},
+	{
+		"id" : 92,
+		"name" : "Monte Plata"
+	},
+	{
+		"id" : 93,
+		"name" : "San José de Ocoa"
+	},
+	{
+		"id" : 94,
+		"name" : "Peravia"
+	}
+]
