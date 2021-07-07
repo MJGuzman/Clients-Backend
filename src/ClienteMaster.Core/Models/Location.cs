@@ -12,7 +12,7 @@ namespace ClientMaster.Core.Models
         [Required] public int SectorId { get; set; }
         [ForeignKey("ProvinceId, MunicipalityId, SectorId ")]
         public Sector Sector { get; set; }
-        [Required] public int CustomerId { get; set; }
-        public Customer Customer { get; set; }
+        //[Required] public int CustomerId { get; set; }
+        //public Customer Customer { get; set; }
     }
 }

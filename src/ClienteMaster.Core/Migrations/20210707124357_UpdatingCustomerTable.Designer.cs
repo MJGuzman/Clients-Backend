@@ -4,14 +4,16 @@ using ClientMaster.Core.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ClientMaster.Core.Migrations
 {
     [DbContext(typeof(ClientMasterContext))]
-    partial class ClientMasterContextModelSnapshot : ModelSnapshot
+    [Migration("20210707124357_UpdatingCustomerTable")]
+    partial class UpdatingCustomerTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

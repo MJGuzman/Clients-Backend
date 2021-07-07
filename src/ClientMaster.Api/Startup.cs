@@ -52,6 +52,9 @@ namespace ClientMaster.Api
             //Dependency injection
             services.AddTransient<ICustomerService, CustomerService>();
             services.AddTransient<ILocationService, LocationService>();
+            services.AddTransient<IProvinceService, ProvinceService>();
+            services.AddTransient<IMunicipalityService, MunicipalityService>();
+            services.AddTransient<ISectorService, SectorService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

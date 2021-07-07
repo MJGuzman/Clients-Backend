@@ -13,6 +13,7 @@ namespace ClientMaster.Core.Models
         [Required] public string Email { get; set; }
         [Required] public Gender Gender { get; set; }
         [Required] public DateTime Birthday { get; set; }
-        public ICollection<Location> Adreesses { get; set; }
+        [Required] public bool Active { get; set; } = true;
+        public ICollection<Location> Addresses { get; set; }
     }
 }

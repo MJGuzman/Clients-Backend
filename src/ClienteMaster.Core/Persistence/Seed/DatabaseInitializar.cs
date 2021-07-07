@@ -33,24 +33,23 @@ namespace ClientMaster.Core.Persistence.Seed
 
         private static void SeedProvinces()
         {
-            if (!_context.Provinces.Any())
+            if (_context.Provinces.Any()) return;
+            var provincesJson = GetEmbeddedResourceAsString(PROVINCES_RESOURCE_NAME);
+
+            ICollection<Province> provinces = JsonConvert.DeserializeObject<ICollection<Province>>(provincesJson);
+
+            provinces = provinces.Select(upper => new Province
             {
-                var provincesJson = GetEmbeddedResourceAsString(PROVINCES_RESOURCE_NAME);
+                Id = upper.Id,
+                Name = upper.Name.ToUpper()
+            }).ToList();
 
-                ICollection<Province> provinces = JsonConvert.DeserializeObject<ICollection<Province>>(provincesJson);
-
-                provinces = provinces.Select(upper => new Province
-                {
-                    Id = upper.Id,
-                    Name = upper.Name.ToUpper()
-                }).ToList();
-
-                _context.Provinces.AddRange(provinces);
-            }
+            _context.Provinces.AddRange(provinces);
         }
 
         private static void SeedMunicipalities()
         {
+            if (_context.Municipalities.Any()) return;
             var municipalitiesJson = GetEmbeddedResourceAsString(MUNICIPALITIES_RESOURCE_NAME);
 
             ICollection<Municipality> municipalities =
@@ -68,16 +67,20 @@ namespace ClientMaster.Core.Persistence.Seed
 
         private static void SeedSectors()
         {
-            var sectorsJson = GetEmbeddedResourceAsString(SECTORS_RESOURCE_NAME);
-
-            ICollection<Sector> sectors = JsonConvert.DeserializeObject<ICollection<Sector>>(sectorsJson);
-
-            int increment = 1;
-            foreach (var sector in sectors)
+            if (!_context.Sectors.Any())
             {
-                sector.Name = sector.Name.ToUpper();
-                sector.SectorId = increment;
-                increment++;
+                var sectorsJson = GetEmbeddedResourceAsString(SECTORS_RESOURCE_NAME);
+
+                ICollection<Sector> sectors = JsonConvert.DeserializeObject<ICollection<Sector>>(sectorsJson);
+
+                int increment = 1;
+                foreach (var sector in sectors)
+                {
+                    sector.Name = sector.Name.ToUpper();
+                    sector.SectorId = increment;
+                    increment++;
+                }
+                _context.Sectors.AddRange(sectors);
             }
         }
 

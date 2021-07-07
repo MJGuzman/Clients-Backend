@@ -1,4 +1,5 @@
 ﻿using ClienteMaster.Core.Framework.Enums;
+using ClientMaster.Core.Models.Dtos.LocationDtos;
 using System;
 using System.Collections.Generic;
 
@@ -12,6 +13,7 @@ namespace ClientMaster.Core.Models.Dtos.CustomerDtos
         public string Email { get; set; }
         public Gender Gender { get; set; }
         public DateTime Birthday { get; set; }
-        public ICollection<Location> Adreesses { get; set; }
+        public bool Active { get; set; }
+        public ICollection<LocationViewDto> Addresses { get; set; }
     }
 }

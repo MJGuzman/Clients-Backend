@@ -8,7 +8,7 @@ namespace ClientMaster.Core.Models.Dtos.LocationDtos
         [Required] public int ProvinceId { get; set; }
         [Required] public int MunicipalityId { get; set; }
         [Required] public int SectorId { get; set; }
-        [Required] public int CustomerId { get; set; }
+        //[Required] public int CustomerId { get; set; }
 
     }
 }

@@ -4,7 +4,6 @@ using ClientMaster.Core.Models.Dtos.LocationDtos;
 using ClientMaster.Core.Persistence;
 using ClientMaster.Core.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace ClientMaster.Core.Services
@@ -22,7 +21,7 @@ namespace ClientMaster.Core.Services
         public async Task<LocationViewDto> GetAllAsync(int customerId)
         {
             var locations = await _context.Locations
-                .Where(filter => filter.CustomerId == customerId)
+
                 .ToListAsync();
 
             return _mapper.Map<LocationViewDto>(locations);

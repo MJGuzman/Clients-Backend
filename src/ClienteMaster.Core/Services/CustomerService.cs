@@ -4,6 +4,8 @@ using ClientMaster.Core.Models.Dtos.CustomerDtos;
 using ClientMaster.Core.Persistence;
 using ClientMaster.Core.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace ClientMaster.Core.Services
@@ -18,17 +20,27 @@ namespace ClientMaster.Core.Services
             _context = context;
             _mapper = mapper;
         }
-        public async Task<CustomerViewDto> GetAllAsync()
+        public async Task<ICollection<CustomerViewDto>> GetAllAsync()
         {
             var customers = await _context.Customers
+                .Include(i => i.Addresses)
+                .ThenInclude(i => i.Sector)
+                .ThenInclude(i => i.Municipality)
+                .ThenInclude(i => i.Province)
+                .Where(filter => filter.Active)
                 .ToListAsync();
 
-            return _mapper.Map<CustomerViewDto>(customers);
+            return _mapper.Map<ICollection<CustomerViewDto>>(customers);
         }
 
         public async Task<CustomerViewDto> GetByIdAsync(int id)
         {
             var customer = await _context.Customers
+                .Include(i => i.Addresses)
+                .ThenInclude(i => i.Sector)
+                .ThenInclude(i => i.Municipality)
+                .ThenInclude(i => i.Province)
+                .Where(filter => filter.Active)
                 .FirstOrDefaultAsync(filter => filter.Id == id);
 
             return _mapper.Map<CustomerViewDto>(customer);
@@ -59,7 +71,9 @@ namespace ClientMaster.Core.Services
             var customer = await _context.Customers
                 .FirstOrDefaultAsync(filter => filter.Id == id);
 
-            _context.Customers.Remove(customer);
+            customer.Active = false;
+
+            _context.Customers.Update(customer);
 
             return await _context.SaveChangesAsync() > 0;
         }
