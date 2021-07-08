@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 
+
 namespace ClientMaster.Api
 {
     public class Startup
@@ -26,7 +27,6 @@ namespace ClientMaster.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -39,6 +39,20 @@ namespace ClientMaster.Api
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
                     migration => migration.MigrationsAssembly("ClientMaster.Core"));
             });
+
+            //services.AddControllers()
+            //    .AddNewtonsoftJson(opt =>
+            //    {
+            //        opt.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            //        opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            //    });
+
+            services.AddCors(options => options.AddPolicy("corsPolicy", builder =>
+            {
+                builder.AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowAnyOrigin();
+            }));
 
             // Automapper
             var mappingConfig = new MapperConfiguration(mc =>
@@ -67,6 +81,8 @@ namespace ClientMaster.Api
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ClientMaster.Api v1"));
             }
+
+            app.UseCors("corsPolicy");
 
             app.UseHttpsRedirection();
 
